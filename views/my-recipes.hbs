@@ -1,0 +1,15 @@
+<h1>My Recipes</h1>
+
+{{#each myRecipes}}
+
+<p>Title: {{this.title}}</p>
+<p>Total Time: {{this.totalTime}}</p>
+<p>Ingredients: {{this.ingredients}}</p>
+<p>Instructions: {{this.instructions}}</p>
+<p>Notes: {{this.notes}}</p>
+{{!-- <a href="/search-recipes/{{this._id}}">View Recipe</a> --}}
+<hr/>
+
+{{/each}} 
+
+{{message}}

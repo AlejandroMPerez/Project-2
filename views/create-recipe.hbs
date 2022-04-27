@@ -1,0 +1,20 @@
+<h1>Create Recipe</h1>
+
+<form method="post" action="/recipes/create">
+
+  <label>Title:</label>
+  <input name="title"/>
+  <label>Total Time:</label>
+  <input name="totalTime"/>
+  <label>List of Ingredients:</label>
+  <input name="ingredients"/>
+  <label>Instructions:</label>
+  <input name="instructions"/>
+  <label>Notes:</label>
+  <input name="notes"/>
+
+  <button type="submit">Create Recipe!</button>
+  
+</form>
+
+<p>{{message}}</p>

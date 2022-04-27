@@ -1,0 +1,15 @@
+<h1>Searched Recipe</h1>
+
+{{#each foundRecipes}}
+
+<p><img src="{{this.image}}"></p>
+<p>Title: {{this.title}}</p>
+<p>Ready In: {{this.readyInMinutes}} Minutes</p>
+<p>Serving Size: {{this.servings}}</p>
+<a href="/search-recipes/{{this._id}}">View Recipe</a>
+<hr/>
+
+{{/each}} 
+
+
+

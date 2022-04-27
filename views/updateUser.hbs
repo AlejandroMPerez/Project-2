@@ -1,0 +1,22 @@
+<h1>Update Your Account</h1>
+
+<form method="post" action="/users/update">
+
+    <label>First Name:</label>
+    <input name="firstName" value="{{foundUserId.firstName}}"/>
+    <label>Last Name:</label>
+    <input name="lastName" value="{{foundUserId.lastName}}"/>
+    <label>Date of Birth:</label>
+    <input name="dateOfBirth" value="{{foundUserId.dateOfBirth}}"/>
+    <label>City:</label>
+    <input name="city" value="{{foundUserId.city}}"/>
+    <label>State:</label>
+    <input name="state" value="{{foundUserId.state}}"/>
+    <label>Email:</label>
+    <input name="email" value="{{foundUserId.email}}"/>
+
+    <button type="submit">Update Account</button>
+
+</form>
+
+<p>{{message}}</p>
