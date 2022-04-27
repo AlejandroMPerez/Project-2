@@ -67,7 +67,7 @@ router.get("/login", (req, res, next) => {
 router.post("/login", (req, res, next) => {
   //1. Check fields are filled out
   if (!req.body.email || !req.body.password) {
-    res.render("login", { message: "Please fill out all fields" });
+    res.render("login", { message: "Please fill out all fields." });
   }
 
   //2.Make sure User exists.
@@ -87,7 +87,7 @@ router.post("/login", (req, res, next) => {
             message: `Welcome back, ${foundUser.firstName}!`,
           });
         } else {
-          res.render("login", { message: "Log in attempt, failed." });
+          res.render("login", { message: "Log in attempt failed. Please try again." });
         }
       }
     })

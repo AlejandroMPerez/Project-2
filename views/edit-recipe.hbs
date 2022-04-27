@@ -1,0 +1,26 @@
+<h1>Edit Recipe</h1>
+
+<form method="post" action="/recipes/my-recipes/{{editRecipe._id}}/edit">
+
+    <label>Title:</label>
+    <input name="title" value="{{editRecipe.title}}"/>
+    <label>Ready Time:</label>
+    <input name="totalTime" value="{{editRecipe.totalTime}}"/>
+    <label>Ingredients:</label>
+    <input name="ingredients" value="{{editRecipe.ingredients}}"/>
+    <label>Instructions:</label>
+    <input name="instructions" value="{{editRecipe.instructions}}"/>
+    <label>Notes:</label>
+    <input name="notes" value="{{editRecipe.notes}}"/>
+
+    <button type="submit">Edit Recipe</button>
+    
+</form>
+
+<form method="post" action="/recipes/my-recipes/{{editRecipe._id}}/edit/delete">
+    <button type="submit">Delete Recipe</button>
+</form>
+
+<p>{{message}}</p>
+
+{{!-- <p><a href="/recipes/my-recipes/{{editRecipe._id}}/delete">Delete Recipe</a></p> --}}

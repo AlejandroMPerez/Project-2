@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const axios = require("axios");
 const isLoggedIn = require('../middleware/isLoggedIn');
+require("dotenv/config")
 
 //GET Recipe listings.
 router.get("/", isLoggedIn, (req, res, next) => {
@@ -24,7 +25,7 @@ router.post("/", isLoggedIn, function(req, res, next) {
     },
     headers: {
         'X-RapidAPI-Host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com',
-        'X-RapidAPI-Key': '7b24cdb767msh58425498d8a122fp18b3dfjsn36544a6109e3'
+        'X-RapidAPI-Key': process.env.API_SECRET
     }
     };
 

@@ -47,4 +47,43 @@ router.get("/my-recipes", isLoggedIn, (req, res, next) => {
       })
 });
 
+//GET Route to Edit Recipes
+router.get("/my-recipes/:id/edit", isLoggedIn, (req, res, next) => {
+    Recipe.findById(req.params.id)
+      .then((editRecipe) => {
+        res.render("edit-recipe", {editRecipe: editRecipe})
+      })
+      .catch((err) => {
+        res.render("my-recipes", err.message)
+      })
+})
+
+//GET Route to Edit Recipes
+router.post("/my-recipes/:id/edit", isLoggedIn, (req, res, next) => {
+    Recipe.findByIdAndUpdate(req.params.id, {
+        title: req.body.title,
+        totalTime: req.body.totalTime,
+        ingredients: req.body.ingredients,
+        instructions: req.body.instructions,
+        notes: req.body.notes,
+    })
+      .then(() => {
+          res.redirect("/recipes/my-recipes")
+      })
+      .catch((err) => {
+          res.redirect("/recipes/my-recipes", err.message)
+      })
+})
+
+//POST Route to Delete a Recipe
+router.post("/my-recipes/:id/edit/delete", isLoggedIn, (req, res, next) => {
+    Recipe.findByIdAndRemove(req.params.id)
+      .then(() => {
+        res.redirect("/recipes/my-recipes")
+      })
+      .catch((err) => {
+        console.log("Failed to delete Recipe", err.message)
+      })
+})
+
 module.exports = router;
