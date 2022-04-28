@@ -6,10 +6,13 @@
 <p>Title: {{this.title}}</p>
 <p>Ready In: {{this.readyInMinutes}} Minutes</p>
 <p>Serving Size: {{this.servings}}</p>
-<a href="/search-recipes/{{this._id}}">View Recipe</a>
+<p>Score: {{this.spoonacularScore}}</p>
+<a href="/search-recipes/{{this.id}}">View Recipe</a>
 <hr/>
 
 {{/each}} 
+
+{{message}}
 
 
 

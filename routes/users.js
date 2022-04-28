@@ -99,7 +99,7 @@ router.post("/login", (req, res, next) => {
 //GET logout user.
 router.get("/logout", (req, res, next) => {
   req.session.destroy();
-  res.redirect("/");
+  res.render("index", {message: "See you soon!"});
 });
 
 //GET Update Users Account
@@ -109,7 +109,7 @@ router.get("/update", isLoggedIn, (req, res, next) => {
       res.render("updateUser", { foundUserId: foundUserId });
     })
     .catch((err) => {
-      console.log(err.message);
+      res.redirect("/");
     });
 });
 
@@ -123,12 +123,23 @@ router.post("/update", isLoggedIn, (req, res, next) => {
     state: req.body.state,
     email: req.body.email,
   })
-    .then(() => {
-      res.redirect("/");
+    .then((updatedUser) => {
+      res.render("index", {message: "Your account was successfully updated!"});
     })
     .catch((error) => {
       console.log("Failed to update account information.", error.message);
     });
+});
+
+//GET Delete user.
+router.get("/delete", (req, res, next) => {
+  User.findByIdAndDelete(req.session.user._id)
+    .then(() => {
+      res.render("index", {message: "Your account has been successfully deleted."})
+    })
+    .catch((err) => {
+      console.log("Failed", err.message)
+    })
 });
 
 module.exports = router;

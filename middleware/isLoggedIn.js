@@ -2,7 +2,7 @@ const isLoggedIn = (req, res, next) => {
     if (req.session.user) {
         next();
     } else {
-        res.redirect("/");
+        res.render("index", {message: "You must be logged in to access this."});
     }
 };
 

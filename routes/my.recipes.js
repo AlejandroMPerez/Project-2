@@ -22,7 +22,7 @@ router.post("/create", isLoggedIn, (req, res, next) => {
 
     Recipe.create({
         title: req.body.title,
-        totalTime: req.body.totalTime,
+        readyInMinutes: req.body.readyInMinutes,
         ingredients: req.body.ingredients,
         instructions: req.body.instructions,
         notes: req.body.notes,
@@ -62,7 +62,7 @@ router.get("/my-recipes/:id/edit", isLoggedIn, (req, res, next) => {
 router.post("/my-recipes/:id/edit", isLoggedIn, (req, res, next) => {
     Recipe.findByIdAndUpdate(req.params.id, {
         title: req.body.title,
-        totalTime: req.body.totalTime,
+        readyInMinutes: req.body.readyInMinutes,
         ingredients: req.body.ingredients,
         instructions: req.body.instructions,
         notes: req.body.notes,

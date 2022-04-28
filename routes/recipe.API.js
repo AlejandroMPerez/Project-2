@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const axios = require("axios");
 const isLoggedIn = require('../middleware/isLoggedIn');
+const Recipe = require("../models/Recipe.model")
 require("dotenv/config")
 
 //GET Recipe listings.
@@ -20,7 +21,7 @@ router.post("/", isLoggedIn, function(req, res, next) {
         cuisine: req.body.cuisine,
         diet: req.body.diet,
         number: req.body.number,
-        addRecipeInformation: 'true',
+        addRecipeInformation: true,
         ranking: 2,
     },
     headers: {
@@ -30,7 +31,7 @@ router.post("/", isLoggedIn, function(req, res, next) {
     };
 
     axios.request(options).then(function (response) {
-        //res.json(response.data.results)
+        console.log(response.data.results)
         res.render("found-recipes", {foundRecipes: response.data.results})
     }).catch(function (error) {
         console.error(error);
@@ -38,10 +39,65 @@ router.post("/", isLoggedIn, function(req, res, next) {
 
 })
 
-//GET Recipe ID to view more information
-// router.get("/recipe/:id", (req, res, next) => {
-   
-// })
+//GET Route to view that specific Recipe
+router.get("/:id", isLoggedIn, (req, res, next) => {
+    const recipeId = req.params.id
+    const options = {
+        method: 'GET',
+        url: 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/informationBulk',
+        params: {ids: recipeId},
+        headers: {
+          'X-RapidAPI-Host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com',
+          'X-RapidAPI-Key': process.env.API_SECRET
+        }
+      };
+      
+      axios.request(options)
+        .then(function (response) {
+          let summary = response.data[0].summary.replace(/<[^>]*>/g, '') //.summary.replace(/<[^>]*>/g, '') is regex that removes HTML tags from the summary description.
+          res.render("found-recipe-ID", {foundRecipe: response.data[0], summary: summary, analyzedInstructions: response.data[0].analyzedInstructions[0]})
+      }).catch(function (error) {
+          console.error(error);
+      });
+});
+
+//POST Route to add the specific Recipe to each individual User.
+router.post("/:id/save", isLoggedIn, (req, res, next) => {
+    const recipeId = req.params.id
+    const options = {
+        method: 'GET',
+        url: 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/informationBulk',
+        params: {ids: recipeId},
+        headers: {
+          'X-RapidAPI-Host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com',
+          'X-RapidAPI-Key': process.env.API_SECRET
+        }
+      };
+      
+      axios.request(options)
+        .then(function (response) {
+          let summary = response.data[0].summary.replace(/<[^>]*>/g, '') //.summary.replace(/<[^>]*>/g, '') is regex that removes HTML tags from the summary description.
+
+          Recipe.create({
+            title: response.data.title,
+            readyInMinutes: response.data.readyInMinutes,
+            ingredients: response.data.ingredients,
+            instructions: response.data.instructions,
+            creatorId: req.session.user._id,
+        })
+          .then(() => {
+              res.redirect("/recipes/my-recipes")
+          })
+          .catch(() => {
+              res.render("create-recipes", {message: "Your Recipe was not successfuly created. Please try again."})
+          })
+
+
+          res.render("found-recipe-ID", {foundRecipe: response.data[0], summary: summary, analyzedInstructions: response.data[0].analyzedInstructions[0]})
+      }).catch(function (error) {
+          console.error(error);
+      });
+})
 
 
 

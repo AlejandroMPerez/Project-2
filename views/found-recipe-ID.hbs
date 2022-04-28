@@ -1,0 +1,35 @@
+<h1>Found Recipe ID</h1>
+
+
+<p><img src="{{foundRecipe.image}}"></p>
+<p>Title: {{foundRecipe.title}}</p>
+<p>Summary: {{summary}}</p>
+<p>Ready Minutes: {{foundRecipe.readyInMinutes}}</p>
+<p>Preparation Minutes: {{foundRecipe.preparationMinutes}}</p>
+<p>Cooking Minutes: {{foundRecipe.cookingMinutes}}</p>
+<p>Servings: {{foundRecipe.servings}}</p>
+<p>Vegetarian: {{foundRecipe.vegetarian}}</p>
+<p>Vegan: {{foundRecipe.vegan}}</p>
+<p>Gluten Free: {{foundRecipe.glutenFree}}</p>
+<p>Dairy Free: {{foundRecipe.dairyFree}}</p>
+<hr/>
+<p>Ingredients:</p>
+    <ul>
+    {{#each foundRecipe.extendedIngredients}}
+        <li>{{this.original}}</li>
+    {{/each}}
+    </ul>
+<hr/>
+<p>Instructions:</p>
+    <ol>
+    {{#each analyzedInstructions.steps}}
+        <li>{{this.step}}</li>
+    {{/each}}
+    </ol>    
+<hr/>
+
+
+<form method="post" action="/recipes/my-recipes">
+    <button type="submit">Add this to my Recipes!</button>
+</form>
+
