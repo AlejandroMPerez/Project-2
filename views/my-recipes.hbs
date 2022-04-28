@@ -2,10 +2,11 @@
 
 {{#each myRecipes}}
 
+<p><img src="{{this.image}}"/></p>
 <p>Title: {{this.title}}</p>
 <p>Ready Time: {{this.readyInMinutes}}</p>
 <p>Ingredients: {{this.ingredients}}</p>
-<p>Instructions: {{this.instructions}}</p>
+<p>Instructions: {{this.analyzedInstructions}}</p>
 <p>Notes: {{this.notes}}</p>
 <a href="/recipes/my-recipes/{{this._id}}/edit">Edit Recipe</a>
 <hr/>

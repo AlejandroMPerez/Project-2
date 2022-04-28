@@ -3,24 +3,25 @@
   <head>
     <title>{{title}}</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    
   </head>
   <body>
 
     <header>
-      <nav>
-        <div>
-          {{!-- <img src="" alt=""/> --}}
+        <div><img class="logo" src="https://simg.nicepng.com/png/small/349-3491336_chef-cook-vector-png-image-cook-png.png" alt="Logo"/></div>
+        <ul class="nav-left">
           <a href="/search-recipes">Search Recipes</a>
           <a href="/recipes/my-recipes">My Recipes</a>
           <a href="/recipes/create">Create Recipes</a>
-        </div>
-        <div>
+        </ul>
+        <ul class="nav-right">
           <a href="/users/login">Log In</a>
-          <a href="/users/update">Update Account</a>
+          <a href="/users/update">Account</a>
           <a href="/users/signup">Sign Up</a>
           <a href="/users/logout">Log Out</a>
-        </div>  
-      </nav>
+        </ul> 
+
+        {{!-- BACKGROUND IMAGE --}}
     </header>    
  
 

@@ -77,23 +77,23 @@ router.post("/:id/save", isLoggedIn, (req, res, next) => {
       axios.request(options)
         .then(function (response) {
           let summary = response.data[0].summary.replace(/<[^>]*>/g, '') //.summary.replace(/<[^>]*>/g, '') is regex that removes HTML tags from the summary description.
-
+          
           Recipe.create({
-            title: response.data.title,
-            readyInMinutes: response.data.readyInMinutes,
-            ingredients: response.data.ingredients,
-            instructions: response.data.instructions,
+            image: response.data[0].image,
+            title: response.data[0].title,
+            readyInMinutes: response.data[0].readyInMinutes,
+            ingredients: response.data[0].ingredients,
+            analyzedInstructions: response.data[0].analyzedInstructions,
             creatorId: req.session.user._id,
         })
-          .then(() => {
+          .then((response) => {
+              console.log("success", response.data)
               res.redirect("/recipes/my-recipes")
           })
-          .catch(() => {
-              res.render("create-recipes", {message: "Your Recipe was not successfuly created. Please try again."})
+          .catch((err) => {
+              console.log("failed", err.message)
+              res.render("search-recipes", {message: "Your Recipe was not successfuly created. Please try again."})
           })
-
-
-          res.render("found-recipe-ID", {foundRecipe: response.data[0], summary: summary, analyzedInstructions: response.data[0].analyzedInstructions[0]})
       }).catch(function (error) {
           console.error(error);
       });

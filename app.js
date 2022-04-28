@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const mongoose = require("mongoose");
+require("dotenv/config");
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -45,7 +46,7 @@ app.use(function(err, req, res, next) {
 });
 
 mongoose
-  .connect("mongodb://localhost/Project-2")
+  .connect( process.env.MONGODB_URI || "mongodb://localhost/Project-2")
   .then((x) =>
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   )

@@ -1,8 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+  border: 0;
 }
 
-a {
-  color: #00B7FF;
+.logo {
+  width: 6vw;
+  height: auto;
 }
+
+header {
+  display: flex;
+  flex-direction: row;
+  background-color: aqua;
+  justify-content: space-evenly;
+}
+
+nav {
+  align-items: center;
+  position: fixed;
+  width: 100%;
+}
+
+.nav-left {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.nav-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+

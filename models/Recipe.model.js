@@ -2,6 +2,9 @@ const { model, Schema } = require("mongoose");
 
 const recipeSchema = new Schema ({
 
+    image: {
+        type: String,
+    },
     title: {
         type: String,
         required: true,
@@ -12,8 +15,8 @@ const recipeSchema = new Schema ({
     ingredients: {
         type: String,
     },
-    instructions: {
-        type: String,
+    analyzedInstructions: {
+        type: Array,
     },
     notes: {
         type: String,

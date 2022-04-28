@@ -21,10 +21,11 @@ router.post("/create", isLoggedIn, (req, res, next) => {
     }
 
     Recipe.create({
+        image: req.body.image,
         title: req.body.title,
         readyInMinutes: req.body.readyInMinutes,
         ingredients: req.body.ingredients,
-        instructions: req.body.instructions,
+        analyzedInstructions: req.body.analyzedInstructions,
         notes: req.body.notes,
         creatorId: req.session.user._id,
     })
@@ -61,10 +62,11 @@ router.get("/my-recipes/:id/edit", isLoggedIn, (req, res, next) => {
 //GET Route to Edit Recipes
 router.post("/my-recipes/:id/edit", isLoggedIn, (req, res, next) => {
     Recipe.findByIdAndUpdate(req.params.id, {
+        image: req.body.image,
         title: req.body.title,
         readyInMinutes: req.body.readyInMinutes,
         ingredients: req.body.ingredients,
-        instructions: req.body.instructions,
+        analyzedInstructions: req.body.analyzedInstructions,
         notes: req.body.notes,
     })
       .then(() => {
