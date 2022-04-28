@@ -6,7 +6,14 @@
 <p>Title: {{this.title}}</p>
 <p>Ready Time: {{this.readyInMinutes}}</p>
 <p>Ingredients: {{this.ingredients}}</p>
-<p>Instructions: {{this.analyzedInstructions}}</p>
+
+<p>Instructions:</p>
+<ol>
+    {{#each analyzedInstructions.steps}}
+        <li>{{this.step}}</li>
+    {{/each}}
+</ol>
+
 <p>Notes: {{this.notes}}</p>
 <a href="/recipes/my-recipes/{{this._id}}/edit">Edit Recipe</a>
 <hr/>
@@ -14,3 +21,7 @@
 {{/each}} 
 
 {{message}}
+
+  {{!-- {{#each analyzedInstructions.steps}}
+        <li>{{this.step}}</li>
+    {{/each}} --}}
