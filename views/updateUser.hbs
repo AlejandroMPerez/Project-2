@@ -1,24 +1,26 @@
-<h1>Update Your Account</h1>
+<section class="updateUser-section-1">
 
-<form method="post" action="/users/update">
+    <h1>Update Your Account</h1>
+    <form class="updateUser-form" method="post" action="/users/update">
 
-    <label>First Name:</label>
-    <input name="firstName" value="{{foundUserId.firstName}}"/>
-    <label>Last Name:</label>
-    <input name="lastName" value="{{foundUserId.lastName}}"/>
-    <label>Date of Birth:</label>
-    <input name="dateOfBirth" value="{{foundUserId.dateOfBirth}}"/>
-    <label>City:</label>
-    <input name="city" value="{{foundUserId.city}}"/>
-    <label>State:</label>
-    <input name="state" value="{{foundUserId.state}}"/>
-    <label>Email:</label>
-    <input name="email" value="{{foundUserId.email}}"/>
+        <label>First Name:</label>
+        <input class="updateUser-form-input" name="firstName" value="{{foundUserId.firstName}}"/>
+        <label class="updateUser-form-label">Last Name:</label>
+        <input class="updateUser-form-input" name="lastName" value="{{foundUserId.lastName}}"/>
+        <label class="updateUser-form-label">Date of Birth:</label>
+        <input class="updateUser-form-input" name="dateOfBirth" value="{{foundUserId.dateOfBirth}}"/>
+        <label class="updateUser-form-label">City:</label>
+        <input class="updateUser-form-input" name="city" value="{{foundUserId.city}}"/>
+        <label class="updateUser-form-label">State:</label>
+        <input class="updateUser-form-input" name="state" value="{{foundUserId.state}}"/>
+        <label class="updateUser-form-label">Email:</label>
+        <input class="updateUser-form-input" name="email" value="{{foundUserId.email}}"/>
 
-    <button type="submit">Update Account</button>
-    <br>
-    <a href="/users/delete">Delete Account</a>
+        <button class="updateUser-form-button" type="submit">Update Account</button>
+        <br>
+        <a class="updateUser-form-a" href="/users/delete">Delete Account</a>
 
-</form>
+    </form>
+    <p>{{message}}</p>
 
-<p>{{message}}</p>
+</section>

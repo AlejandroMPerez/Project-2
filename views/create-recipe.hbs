@@ -1,20 +1,22 @@
-<h1>Create a Recipe</h1>
+<section class="create-recipe-section-1">
 
-<form method="post" action="/recipes/create">
+<h1>Create a Recipe</h1>
+<form class="create-recipe-form" method="post" action="/recipes/create">
 
   <label>Title:</label>
   <input name="title"/>
-  <label>Total Time:</label>
+  <label class="create-recipe-form-label">Total Time:</label>
   <input name="readyInMinutes"/>
-  <label>List of Ingredients:</label>
-  <input name="ingredients"/>
-  <label>Instructions:</label>
-  <input name="analyzedInstructions"/>
-  <label>Notes:</label>
-  <input name="notes"/>
+  <label class="create-recipe-form-label">List of Ingredients:</label>
+  <textarea name="extendedIngredients" cols="35" rows="5"></textarea>
+  <label class="create-recipe-form-label">Instructions:</label>
+  <textarea name="analyzedInstructions" cols="35" rows="5"></textarea>
+  <label class="create-recipe-form-label">Notes:</label>
+  <textarea name="notes" cols="35" rows="5"></textarea>
 
-  <button type="submit">Create Recipe!</button>
+  <button class="create-recipe-form-button" type="submit">Create Recipe!</button>
   
 </form>
-
 <p>{{message}}</p>
+
+</section>

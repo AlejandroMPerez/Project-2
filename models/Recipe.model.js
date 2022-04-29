@@ -12,8 +12,8 @@ const recipeSchema = new Schema ({
     readyInMinutes: {
         type: String,
     },
-    ingredients: {
-        type: String,
+    extendedIngredients: {
+        type: Array,
     },
     analyzedInstructions: {
         type: Array,

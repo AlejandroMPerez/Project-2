@@ -1,24 +1,23 @@
-<h1>Sign Up</h1>
+<section class="signup-section-1">
+    <h1>Sign Up</h1>
+    <form class="signup-form" method="post" action="/users/signup">
 
-<form method="post" action="/users/signup">
+        <label>First Name:</label>
+        <input name="firstName"/>
+        <label class="signup-form-label">Last Name:</label>
+        <input name="lastName"/>
+        <label class="signup-form-label">Date of Birth:</label>
+        <input name="dateOfBirth"/>
+        <label class="signup-form-label">City:</label>
+        <input name="city"/>
+        <label class="signup-form-label">State:</label>
+        <input name="state"/>
+        <label class="signup-form-label">Email:</label>
+        <input name="email"/>
+        <label class="signup-form-label">Password:</label>
+        <input name="password" type="password"/>
 
-    <label>First Name:</label>
-    <input name="firstName"/>
-    <label>Last Name:</label>
-    <input name="lastName"/>
-    <label>Date of Birth:</label>
-    <input name="dateOfBirth"/>
-    <label>City:</label>
-    <input name="city"/>
-    <label>State:</label>
-    <input name="state"/>
-    <label>Email:</label>
-    <input name="email"/>
-    <label>Password:</label>
-    <input name="password" type="password"/>
-
-    <button type="submit">Create User</button>
-
-</form>
-
-<p>{{message}}</p>
+        <button class="signup-form-button" type="submit">Create User</button>
+    </form>
+    <p>{{message}}</p>
+</section>

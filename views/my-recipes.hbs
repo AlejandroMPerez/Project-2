@@ -1,27 +1,48 @@
+<section class="my-recipes-section-1">
+
 <h1>My Recipes</h1>
 
 {{#each myRecipes}}
-
-<p><img src="{{this.image}}"/></p>
+<p><img class="my-recipes-img" src="{{this.image}}"/></p>
 <p>Title: {{this.title}}</p>
 <p>Ready Time: {{this.readyInMinutes}}</p>
-<p>Ingredients: {{this.ingredients}}</p>
+
+<p>Ingredients:</p>
+<ul>
+    {{#each extendedIngredients}}
+    {{#if this.original}}
+        <li>{{this.original}}</li>
+
+    {{else}}
+        <li>{{this}}</li>
+
+    {{/if}}
+    {{/each}}      
+</ul>
 
 <p>Instructions:</p>
 <ol>
-    {{#each analyzedInstructions.steps}}
-        <li>{{this.step}}</li>
+   {{#each analyzedInstructions}}
+   {{#if this.steps}}
+{{!-- This comes from the API --}}
+        {{#each this.steps}}
+            <li>{{this.step}}</li>
+        {{/each}}
+    {{else}}
+
+{{!-- This comes from user created recipes --}}
+ <li>{{this}}</li>
+    {{/if}}
+
     {{/each}}
-</ol>
+</ol>    
 
 <p>Notes: {{this.notes}}</p>
-<a href="/recipes/my-recipes/{{this._id}}/edit">Edit Recipe</a>
-<hr/>
-
+<a class="my-recipes-a" href="/recipes/my-recipes/{{this._id}}/edit">Edit Recipe</a>
+<hr class="my-recipes-hr"/>
 {{/each}} 
-
 {{message}}
 
-  {{!-- {{#each analyzedInstructions.steps}}
-        <li>{{this.step}}</li>
-    {{/each}} --}}
+</section>
+
+

@@ -1,7 +1,6 @@
-<h1>Found Recipe ID</h1>
+<section class="found-recipes-id-section-1">
 
-
-<p><img src="{{foundRecipe.image}}"></p>
+<p><img class="found-recipes-id-img" src="{{foundRecipe.image}}"></p>
 <p>Title: {{foundRecipe.title}}</p>
 <p>Summary: {{summary}}</p>
 <p>Ready Minutes: {{foundRecipe.readyInMinutes}}</p>
@@ -30,6 +29,8 @@
 
 
 <form method="post" action="/search-recipes/{{foundRecipe.id}}/save">
-    <button type="submit">Add this to my Recipes!</button>
+    <button class="found-recipes-id-button" type="submit">Add this to my Recipes!</button>
 </form>
+
+</section>
 

@@ -1,26 +1,46 @@
-<h1>Edit Recipe</h1>
+<section class="edit-recipe-section-1">
 
-<form method="post" action="/recipes/my-recipes/{{editRecipe._id}}/edit">
+<h1>Edit Recipe</h1> 
+<form  class="edit-recipe-form" method="post" action="/recipes/my-recipes/{{editRecipe._id}}/edit">
 
     <label>Title:</label>
-    <input name="title" value="{{editRecipe.title}}"/>
-    <label>Ready Time:</label>
-    <input name="readyInMinutes" value="{{editRecipe.readyInMinutes}}"/>
-    <label>Ingredients:</label>
-    <input name="ingredients" value="{{editRecipe.ingredients}}"/>
-    <label>Instructions:</label>
-    <input name="analyzedInstructions" value="{{editRecipe.analyzedInstructions}}"/>
-    <label>Notes:</label>
-    <input name="notes" value="{{editRecipe.notes}}"/>
+    <input class="edit-recipe-input" name="title" value="{{editRecipe.title}}"/>
+    <label class="edit-recipe-form-label">Ready Time:</label>
+    <input class="edit-recipe-input" name="readyInMinutes" value="{{editRecipe.readyInMinutes}}"/>
 
-    <button type="submit">Edit Recipe</button>
+    <label class="edit-recipe-form-label">Ingredients:</label>
+    <input class="edit-recipe-input" name="extendedIngredients" 
+    value="{{#each editRecipe.extendedIngredients}}
+    {{#if this.original}}
+        {{this.original}}
+    {{else}}
+        {{this}} 
+    {{/if}}
+    {{/each}}"
+    />
+
+    <label class="edit-recipe-form-label">Instructions:</label>
+    <input class="edit-recipe-input" name="analyzedInstructions" 
+    value="{{#each editRecipe.analyzedInstructions}}
+    {{#if this.steps}}
+        {{#each this.steps}}
+            {{this.step}}
+        {{/each}}
+    {{else}}
+        {{this}}
+    {{/if}}
+    {{/each}}"
+    />
+
+    <label class="edit-recipe-form-label">Notes:</label>
+    <input class="edit-recipe-input" name="notes" value="{{editRecipe.notes}}"/>
+
+    <button class="edit-recipe-form-button" type="submit">Edit Recipe</button>
     
 </form>
 
 <form method="post" action="/recipes/my-recipes/{{editRecipe._id}}/edit/delete">
-    <button type="submit">Delete Recipe</button>
+    <button class="edit-recipe-form-delete" type="submit">Delete Recipe</button>
 </form>
 
-<p>{{message}}</p>
-
-{{!-- <p><a href="/recipes/my-recipes/{{editRecipe._id}}/delete">Delete Recipe</a></p> --}}
+</section>

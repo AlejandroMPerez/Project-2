@@ -20,20 +20,22 @@ router.post("/create", isLoggedIn, (req, res, next) => {
         res.render("create-recipes", {message: "Please fill out the Title field."})
     }
 
+    let instructionsArr = req.body.analyzedInstructions.split(".")
+
     Recipe.create({
         image: req.body.image,
         title: req.body.title,
         readyInMinutes: req.body.readyInMinutes,
-        ingredients: req.body.ingredients,
-        analyzedInstructions: req.body.analyzedInstructions,
+        extendedIngredients: req.body.extendedIngredients,
+        analyzedInstructions: instructionsArr,
         notes: req.body.notes,
         creatorId: req.session.user._id,
     })
       .then(() => {
           res.redirect("/recipes/my-recipes")
       })
-      .catch(() => {
-          res.render("create-recipes", {message: "Your Recipe was not successfuly created. Please try again."})
+      .catch((err) => {
+          res.render("create-recipe", {message: "Your Recipe was not successfuly created. Please try again."})
       })
 })
 
@@ -41,6 +43,7 @@ router.post("/create", isLoggedIn, (req, res, next) => {
 router.get("/my-recipes", isLoggedIn, (req, res, next) => {
     Recipe.find({ creatorId: req.session.user._id })
       .then((myRecipes) => {
+          console.log(myRecipes)
           res.render("my-recipes", {myRecipes: myRecipes})
       })
       .catch((err) => {
@@ -65,7 +68,7 @@ router.post("/my-recipes/:id/edit", isLoggedIn, (req, res, next) => {
         image: req.body.image,
         title: req.body.title,
         readyInMinutes: req.body.readyInMinutes,
-        ingredients: req.body.ingredients,
+        extendedIngredients: req.body.extendedIngredients,
         analyzedInstructions: req.body.analyzedInstructions,
         notes: req.body.notes,
     })
@@ -84,7 +87,7 @@ router.post("/my-recipes/:id/edit/delete", isLoggedIn, (req, res, next) => {
         res.redirect("/recipes/my-recipes")
       })
       .catch((err) => {
-        console.log("Failed to delete Recipe", err.message)
+        console.log(err.message)
       })
 })
 

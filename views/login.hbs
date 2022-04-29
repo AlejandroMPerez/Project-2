@@ -1,14 +1,16 @@
-<h1>Log In</h1>
+<section class="login-section-1">
 
-<form method="post" action="/users/login">
+    <h1>Log In</h1>
+    <form class="login-form" method="post" action="/users/login">
 
-    <label>Email:</label>
-    <input name="email"/>
-    <label>Password:</label>
-    <input name="password" type="password"/>
+        <label>Email:</label>
+        <input name="email"/>
+        <label class="login-form-label">Password:</label>
+        <input name="password" type="password"/>
 
-    <button type="submit">Log In</button>
+        <button class="login-form-button" type="submit">Log In</button>
 
-</form>
+    </form>
+    <p>{{message}}</p>
 
-<p>{{message}}</p>
+</section>
