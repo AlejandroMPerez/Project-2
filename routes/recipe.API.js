@@ -31,7 +31,6 @@ router.post("/", isLoggedIn, function(req, res, next) {
     };
 
     axios.request(options).then(function (response) {
-        console.log(response.data.results)
         res.render("found-recipes", {foundRecipes: response.data.results})
     }).catch(function (error) {
         console.error(error);
@@ -76,8 +75,6 @@ router.post("/:id/save", isLoggedIn, (req, res, next) => {
       
       axios.request(options)
         .then(function (response) {
-  
-          console.log(response.data[0].analyzedInstructions[0])
           
           Recipe.create({
             image: response.data[0].image,
@@ -88,7 +85,6 @@ router.post("/:id/save", isLoggedIn, (req, res, next) => {
             creatorId: req.session.user._id,
         })
           .then(() => {
-              console.log("success")
               res.redirect("/recipes/my-recipes")
           })
           .catch((err) => {

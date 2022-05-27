@@ -43,7 +43,6 @@ router.post("/create", isLoggedIn, (req, res, next) => {
 router.get("/my-recipes", isLoggedIn, (req, res, next) => {
     Recipe.find({ creatorId: req.session.user._id })
       .then((myRecipes) => {
-          console.log(myRecipes)
           res.render("my-recipes", {myRecipes: myRecipes})
       })
       .catch((err) => {
@@ -90,5 +89,6 @@ router.post("/my-recipes/:id/edit/delete", isLoggedIn, (req, res, next) => {
         console.log(err.message)
       })
 })
+
 
 module.exports = router;
