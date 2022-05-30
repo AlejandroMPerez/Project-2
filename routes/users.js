@@ -50,8 +50,7 @@ router.post("/signup", (req, res, next) => {
           req.session.user = newUser;
           res.render("index", { message: `Welcome, ${newUser.firstName}!` });
         })
-        .catch((error) => {
-          console.log("Error while creating user", error.message);
+        .catch(() => {
           res.render("signup", { message: "Failed to create user." });
         });
     }

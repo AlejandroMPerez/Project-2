@@ -87,8 +87,7 @@ router.post("/:id/save", isLoggedIn, (req, res, next) => {
           .then(() => {
               res.redirect("/recipes/my-recipes")
           })
-          .catch((err) => {
-              console.log("failed", err.message)
+          .catch(() => {
               res.render("search-recipes", {message: "Your Recipe was not successfuly created. Please try again."})
           })
       }).catch(function (error) {
