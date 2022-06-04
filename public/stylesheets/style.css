@@ -399,19 +399,43 @@ footer ul {
   background-color: #eaeded;
   height: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   align-items: flex-start;
-  justify-content: center;
-  padding-left: 1%;
+  justify-content: space-evenly;
+  padding-top: 6%;
+}
+
+.found-recipes-container-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.found-recipes-div {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .2);
+  border-radius: 10px;
+  margin: 1%;
+  width: 23.5vw;
+  text-align: center;
 }
 
 .found-recipes-img {
-  border-radius: 20px;
+  display: block;
+  width: 100%;
+  object-position: center;
+  height: 225px;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: center;
+  transition: 200ms transform ease-in-out;
+  border-radius: 10px 10px 0 0;
 }
 
-.found-recipes-hr {
-  color: #24252A;
-  width: 100%;
+.found-recipes-img:hover {
+  transform: scale(1.025);
 }
 
 .found-recipes-a {
@@ -419,9 +443,9 @@ footer ul {
   color: white;
   background-color: #24252A;
   border: 1px solid #24252A;
-  border-radius: 10px;
   text-decoration: none;
   padding: 0 1%;
+  text-align: center;
 }
 
 /* Found Recipe ID */

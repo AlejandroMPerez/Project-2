@@ -1,16 +1,18 @@
 <section class="found-recipes-section-1">
 
-<h1>Searched Recipe</h1>
 {{#each foundRecipes}}
+<div class="found-recipes-container-grid">
+  <div class="found-recipes-div">
 
-<p><img class="found-recipes-img" src="{{this.image}}"></p>
-<p>Title: {{this.title}}</p>
-<p>Ready In: {{this.readyInMinutes}} Minutes</p>
-<p>Serving Size: {{this.servings}}</p>
-<p>Score: {{this.spoonacularScore}}</p>
-<a class="found-recipes-a" href="/search-recipes/{{this.id}}">View Recipe</a>
-<hr class="found-recipes-hr"/>
+    <img class="found-recipes-img" src="{{this.image}}">
+    <p>{{this.title}}</p>
+    <p>Ready In: {{this.readyInMinutes}} Minutes</p>
+    <p>Serving Size: {{this.servings}}</p>
+    <p>Score: {{this.spoonacularScore}}</p>
+    <a class="found-recipes-a" href="/search-recipes/{{this.id}}">View Recipe</a>
 
+  </div>
+</div>
 {{/each}} 
 {{message}}
 
@@ -18,3 +20,4 @@
 
 
 
+Í
