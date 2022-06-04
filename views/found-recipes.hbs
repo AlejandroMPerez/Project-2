@@ -1,8 +1,7 @@
 <section class="found-recipes-section-1">
 
 {{#each foundRecipes}}
-<div class="found-recipes-container-grid">
-  <div class="found-recipes-div">
+  <div class="found-recipes-parent-div">
 
     <img class="found-recipes-img" src="{{this.image}}">
     <p>{{this.title}}</p>
@@ -12,7 +11,6 @@
     <a class="found-recipes-a" href="/search-recipes/{{this.id}}">View Recipe</a>
 
   </div>
-</div>
 {{/each}} 
 {{message}}
 

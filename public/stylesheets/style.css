@@ -385,8 +385,8 @@ footer ul {
   color: white;
   background-color: #24252A;
   border: none;
-  border-radius: 50px;
-  padding: 8px 10px;
+  border-radius: 10px;
+  padding: 4px 8px;
 }
 
 .search-recipes-button:hover {
@@ -406,19 +406,15 @@ footer ul {
   padding-top: 6%;
 }
 
-.found-recipes-container-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-}
-
-.found-recipes-div {
+.found-recipes-parent-div {
   background-color: white;
   display: flex;
   flex-direction: column;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .2);
   border-radius: 10px;
-  margin: 1%;
-  width: 23.5vw;
+  overflow: hidden;
+  margin: 0 0 2% 0;
+  width: 22.5vw;
   text-align: center;
 }
 
@@ -431,7 +427,6 @@ footer ul {
   object-fit: cover;
   object-position: center;
   transition: 200ms transform ease-in-out;
-  border-radius: 10px 10px 0 0;
 }
 
 .found-recipes-img:hover {
@@ -453,15 +448,35 @@ footer ul {
   color: #24252A;
   background-color: #eaeded;
   height: 100%;
+  padding: 6% 0 2% 1%;
+  display: flex;
+  justify-content: center;
+}
+
+.found-recipes-id-container {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  padding: 4% 0 2% 1%;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .2);
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: white;
+  max-width: 40vw;
+  padding-bottom: 2%;
+  margin: 0;
 }
 
 .found-recipes-id-img {
-  border-radius: 20px;
+  width: 100%;
+}
+
+.found-recipes-id-summary {
+  width: 70%;
+}
+
+.found-recipes-id-instructions {
+  width: 50%;
 }
 
 .found-recipes-id-button {
@@ -471,6 +486,7 @@ footer ul {
   border: none;
   border-radius: 50px;
   padding: 8px 10px;
+  width: 100%;
 }
 
 .found-recipes-id-button:hover {

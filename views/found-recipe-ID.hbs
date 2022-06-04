@@ -1,36 +1,36 @@
 <section class="found-recipes-id-section-1">
 
-<p><img class="found-recipes-id-img" src="{{foundRecipe.image}}"></p>
-<p>Title: {{foundRecipe.title}}</p>
-<p>Summary: {{summary}}</p>
-<p>Ready Minutes: {{foundRecipe.readyInMinutes}}</p>
-<p>Preparation Minutes: {{foundRecipe.preparationMinutes}}</p>
-<p>Cooking Minutes: {{foundRecipe.cookingMinutes}}</p>
-<p>Servings: {{foundRecipe.servings}}</p>
-<p>Vegetarian: {{foundRecipe.vegetarian}}</p>
-<p>Vegan: {{foundRecipe.vegan}}</p>
-<p>Gluten Free: {{foundRecipe.glutenFree}}</p>
-<p>Dairy Free: {{foundRecipe.dairyFree}}</p>
-<hr/>
-<p>Ingredients:</p>
-    <ul>
-    {{#each foundRecipe.extendedIngredients}}
-        <li>{{this.original}}</li>
-    {{/each}}
-    </ul>
-<hr/>
-<p>Instructions:</p>
-    <ol>
-    {{#each analyzedInstructions.steps}}
-        <li>{{this.step}}</li>
-    {{/each}}
-    </ol>    
-<hr/>
+<div class="found-recipes-id-container">
 
+    <img class="found-recipes-id-img" src="{{foundRecipe.image}}">
+    <p>{{foundRecipe.title}}</p>
+    <p class="found-recipes-id-summary">{{summary}}</p>
+    <p>Ready Minutes: {{foundRecipe.readyInMinutes}}</p>
+    <p>Preparation Minutes: {{foundRecipe.preparationMinutes}}</p>
+    <p>Cooking Minutes: {{foundRecipe.cookingMinutes}}</p>
+    <p>Servings: {{foundRecipe.servings}}</p>
+    <p>Vegetarian: {{foundRecipe.vegetarian}}</p>
+    <p>Vegan: {{foundRecipe.vegan}}</p>
+    <p>Gluten Free: {{foundRecipe.glutenFree}}</p>
+    <p>Dairy Free: {{foundRecipe.dairyFree}}</p> 
+    <p>Ingredients:</p>
+        <ul>
+        {{#each foundRecipe.extendedIngredients}}
+            <li>{{this.original}}</li>
+        {{/each}}
+        </ul>
+    <p>Instructions:</p>
+        <ol class="found-recipes-id-instructions">
+        {{#each analyzedInstructions.steps}}
+            <li>{{this.step}}</li>
+        {{/each}}
+        </ol>    
 
-<form method="post" action="/search-recipes/{{foundRecipe.id}}/save">
-    <button class="found-recipes-id-button" type="submit">Add this to my Recipes!</button>
-</form>
+    <form method="post" action="/search-recipes/{{foundRecipe.id}}/save">
+        <button class="found-recipes-id-button" type="submit">Add to my Recipes!</button>
+    </form>
+
+</div>
 
 </section>
 
