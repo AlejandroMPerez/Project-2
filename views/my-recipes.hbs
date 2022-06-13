@@ -1,47 +1,46 @@
 <section class="my-recipes-section-1">
 
-<h1>My Recipes</h1>
-
 {{#each myRecipes}}
-<p><img class="my-recipes-img" src="{{this.image}}"/></p>
-<p>Title: {{this.title}}</p>
-<p>Ready Time: {{this.readyInMinutes}}</p>
+<div class="my-recipes-parent-div">
+    <img class="my-recipes-img" src="{{this.image}}"/>
+    <p>Title: {{this.title}}</p>
+    <p>Ready Time: {{this.readyInMinutes}}</p>
 
-<p>Ingredients:</p>
-<ul>
-    {{#each extendedIngredients}}
-    {{#if this.original}}
-        <li>{{this.original}}</li>
+    <p>Ingredients:</p>
+    <ul class="my-recipes-ingredients">
+        {{#each extendedIngredients}}
+        {{#if this.original}}
+            <li>{{this.original}}</li>
 
-    {{else}}
-        <li>{{this}}</li>
+        {{else}}
+            <li>{{this}}</li>
 
-    {{/if}}
-    {{/each}}      
-</ul>
+        {{/if}}
+        {{/each}}      
+    </ul>
 
-<p>Instructions:</p>
-<ol>
-   {{#each analyzedInstructions}}
-   {{#if this.steps}}
-{{!-- This comes from the API --}}
-        {{#each this.steps}}
-            <li>{{this.step}}</li>
+    <p>Instructions:</p>
+    <ol class="my-recipes-instructions">
+    {{#each analyzedInstructions}}
+    {{#if this.steps}}
+    {{!-- This comes from the API --}}
+            {{#each this.steps}}
+                <li>{{this.step}}</li>
+            {{/each}}
+        {{else}}
+
+    {{!-- This comes from user created recipes --}}
+    <li>{{this}}</li>
+        {{/if}}
+
         {{/each}}
-    {{else}}
+    </ol>    
 
-{{!-- This comes from user created recipes --}}
- <li>{{this}}</li>
-    {{/if}}
-
-    {{/each}}
-</ol>    
-
-<p>Notes: {{this.notes}}</p>
-<a class="my-recipes-a" href="/recipes/my-recipes/{{this._id}}/edit">Edit Recipe</a>
-<hr class="my-recipes-hr"/>
-{{/each}} 
-{{message}}
+    <p class="my-recipes-notes">Notes: {{this.notes}}</p>
+    <a class="my-recipes-a" href="/recipes/my-recipes/{{this._id}}/edit">Edit Recipe</a>
+</div>
+    {{/each}} 
+    {{message}}
 
 </section>
 

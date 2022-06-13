@@ -283,19 +283,45 @@ footer ul {
   background-color: #eaeded;
   height: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: space-evenly;
   padding-left: 1%;
+  padding-top: 6%;
+}
+
+.my-recipes-parent-div {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .2);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 0 0 2% 0;
+  width: 40vw;
+  text-align: center;
 }
 
 .my-recipes-img {
-  border-radius: 20px;
+  width: 100%;
+
 }
 
-.my-recipes-hr {
-  color: #24252A;
-  width: 100%;
+.my-recipes-ingredients {
+  width: 50%;
+  overflow-wrap: break-word;
+}
+
+.my-recipes-instructions {
+  width: 50%;
+  overflow-wrap: break-word;
+}
+
+.my-recipes-notes {
+  width: 50%;
+  overflow-wrap: break-word;
 }
 
 .my-recipes-a {
@@ -303,9 +329,9 @@ footer ul {
   color: white;
   background-color: #24252A;
   border: 1px solid #24252A;
-  border-radius: 10px;
   text-decoration: none;
   padding: 0 1%;
+  width: 100%;
 }
 
 /* EDIT Recipes */
